@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+<data>
+    <record id="view_gift" model="ir.ui.view">
+         <field name="name">account.gift.report.tree</field>
+         <field name="model">account.gift.report</field>
+         <field name="arch" type="xml">
+             <tree string="gift list">
+                <field name="raison_sociale"/>
+                <field name="titre"/>
+                <field name="prenom"/>
+                <field name="nom"/>
+                <field name="adresse"/>
+                <field name="code_postal"/>
+                <field name="ville"/>
+                <field name="country_id"/>
+                <field name="montant"/>
+                <field name="liste_projets"/>
+                <field name="compte_destinataire"/>
+                <field name="projet1"/>
+                <field name="projet2"/>
+                <field name="projet3"/>
+                <field name="projet4"/>
+                <field name="projet5"/>
+                <field name="projet6"/>
+                <field name="projet7"/>
+                <field name="projet8"/>
+                <field name="projet9"/>
+                <field name="projet10"/>
+            </tree>
+         </field>
+    </record>
+<!--    <record id="view_sponsorship_report_search" model="ir.ui.view">
+        <field name="name">account.gift.report.search</field>
+        <field name="model">account.gift.report</field>
+        <field name="arch" type="xml">
+            <search string="Sponsorship Analysis">
+                <filter string="Last ten Year" name="lasttenyear" domain="['&amp;', ('start_date', '!=', False), ('start_date','&gt;', (context_today() + relativedelta(years=-10)).strftime('%%Y-06-30'))]" help=""/>
+                <filter string="Last three Year" name="lastthreeyear" domain="['&amp;', ('start_date', '!=', False), ('start_date','&gt;', (context_today() + relativedelta(years=-3)).strftime('%%Y-06-30'))]" help=""/>
+                <separator />
+                <filter string="Marketing activites" name="mktg_act" domain="['&amp;', ('origin_type', '!=', 'transfer'), ('origin_type','!=', 'sub' )]" help="No Sub or transfer as aquisition"/>
+                <separator/>
+                <filter string="Active" domain="[('state','=','active')]" help = "active commitment"/>
+                <filter string="No money commitment" domain="['|', ('state','=','waiting'),('state','=','mandate')]"/>
+                <filter string="Cancelled" domain="[('state','=','cancelled')]"/>
+                <group expand="1" string="Compare FY up to">
+                &lt;!&ndash; <filter string="ytd comparison" name="ytdcomp" domain="['|','&amp;',(int(time.strftime('%%m')),'&lt;',7),('aquisition_month','&lt;=', (int(time.strftime('%%m'))+6)),'&amp;', (int(time.strftime('%%m')),'&gt;',6),('aquisition_month','&lt;=', (int(time.strftime('%%m'))-6))]" help="limit all FY with the current month or lower"/> &ndash;&gt;
+                <filter string="July" name="ytdcomp1" domain="[('aquisition_month','&lt;=', 1)]" help="limit all FY with the month equal or lower than July"/>
+                <filter string="Aug" name="ytdcomp2" domain="[('aquisition_month','&lt;=', 2)]" help="limit all FY with the month equal or lower than Aug"/>
+                <filter string="Sept" name="ytdcomp3" domain="[('aquisition_month','&lt;=', 3)]" help="limit all FY with the month equal or lower than Sept"/>
+                <filter string="Oct" name="ytdcomp4" domain="[('aquisition_month','&lt;=', 4)]" help="limit all FY with the month equal or lower than Oct"/>
+                <filter string="Nov" name="ytdcomp5" domain="[('aquisition_month','&lt;=', 5)]" help="limit all FY with the month equal or lower than Nov"/>
+                <filter string="Dec" name="ytdcomp6" domain="[('aquisition_month','&lt;=', 6)]" help="limit all FY with the month equal or lower than Dec"/>
+                <filter string="Jan" name="ytdcomp7" domain="[('aquisition_month','&lt;=', 7)]" help="limit all FY with the month equal or lower than Jan"/>
+                <filter string="Feb" name="ytdcomp8" domain="[('aquisition_month','&lt;=', 8)]" help="limit all FY with the month equal or lower than Feb"/>
+                <filter string="Mar" name="ytdcomp9" domain="[('aquisition_month','&lt;=', 9)]" help="limit all FY with the month equal or lower than Mar"/>
+                <filter string="Apr" name="ytdcomp10" domain="[('aquisition_month','&lt;=', 10)]" help="limit all FY with the month equal or lower than Apr"/>
+                <filter string="May" name="ytdcomp11" domain="[('aquisition_month','&lt;=', 11)]" help="limit all FY with the month equal or lower than May"/>
+                <filter string="June" name="ytdcomp12" domain="[('aquisition_month','&lt;=', 12)]" help="limit all FY with the month equal or lower than June"/>
+                </group>
+                <group expand="1" string="Group By">
+                    <filter string="Partner" name="partner_id" context="{'group_by':'partner_id','residual_visible':True}"/>
+                    <filter string="Advocate" name='user' context="{'group_by':'advocate_id'}"/>
+                    <filter string="Status" context="{'group_by':'state'}"/>
+                    <separator orientation="vertical" />
+                    <filter string="Date" context="{'group_by':'start_date'}"/>
+                    <filter string="Start Month" context="{'group_by':'start_date:month'}"/>
+                </group>
+            </search>
+        </field>
+    </record>-->
+
+    <record id="action_gift_report" model="ir.actions.act_window">
+        <field name="name">Don à remercier</field>
+        <field name="res_model">account.gift.report</field>
+        <field name="view_mode">tree</field>
+        <field name="view_id" ref="view_gift"/>
+        <!--<field name="search_view_id" ref="view_sponsorship_report_search"/>-->
+        <field name="help">From this report, you can have an list of gifts.</field>
+    </record>
+    <menuitem action="action_gift_report" id="menu_action_gift_report" parent="account.menu_finance_reports" sequence="1"/>
+
+</data>
+</openerp>

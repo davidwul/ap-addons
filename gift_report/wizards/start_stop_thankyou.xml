@@ -1,0 +1,35 @@
+<?xml version="1.0"?>
+<openerp>
+    <data>
+
+
+        <!-- Availability Management -->
+        <record id="view_thankyou_settings_form" model="ir.ui.view">
+            <field name="name">account.gift.thanks.form</field>
+            <field name="model">account.gift.thanks</field>
+            <field name="arch" type="xml">
+                <form string="thank you config" class="oe_form_configuration">
+                    <header>
+                        <button string="Apply" type="object" name="execute" class="oe_highlight"/>
+                        or
+                        <button string="Cancel" type="object" name="cancel" class="oe_link"/>
+                    </header>
+                    <group string="start_stop">
+                        <field name="start_date"/>
+                        <field name="stop_date"/>
+                    </group>
+                </form>
+            </field>
+        </record>
+
+        <record id="open_view_thankyou_date_config" model="ir.actions.act_window">
+            <field name="name">Thank you gifts Configuration</field>
+            <field name="res_model">account.gift.thanks</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">form</field>
+            <field name="target">inline</field>
+        </record>
+
+        <menuitem id="menu_thankyou_date_configuration" name="Periode de remerciement" parent="account.menu_finance_reports" action="open_view_thankyou_date_config" sequence="2"/>
+    </data>
+</openerp>
