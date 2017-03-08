@@ -56,7 +56,7 @@ class AccountGiftReport(models.Model):
                     rp.firstname as prenom,
                     case when is_company then '' else rp.lastname end as nom ,
                     rp.title as title_id,
-                    CASE WHEN rp.street IS NULL THEN rp.street2 ELSE rp.street END as adresse,rp.zip as code_postal,rp.city as ville,
+                    CASE WHEN rp.street ='' THEN rp.street2 ELSE rp.street END as adresse,rp.zip as code_postal,rp.city as ville,
                     rp.country_id,(SELECT SUM(s) FROM UNNEST(aml.montant) s) as montant,
                     '' as compte_destinataire,(SELECT string_agg(distinct s,',') FROM UNNEST(aml.projet) s) as liste_projets,
                     CASE WHEN aml.projet[1] IS NULL THEN '' ELSE concat(aml.projet[1], '(',aml.montant[1],')') END  as projet1,
