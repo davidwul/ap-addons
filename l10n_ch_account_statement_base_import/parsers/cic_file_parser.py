@@ -91,7 +91,7 @@ class CICCSVParser(BaseSwissParser):
         """
 
         balance_end = float_or_zero(self.datas[-1].get("Solde"))
-        balance_start = float_or_zero(self.datas[0].get("Solde"))+float_or_zero(self.datas[0].get(u"Crédit"))-float_or_zero(self.datas[0].get(u"Débit"))
+        balance_start = float_or_zero(self.datas[0].get("Solde"))-float_or_zero(self.datas[0].get(u"Crédit"))-float_or_zero(self.datas[0].get(u"Débit"))
         return balance_start, balance_end
 
     def _parse_transactions(self):
