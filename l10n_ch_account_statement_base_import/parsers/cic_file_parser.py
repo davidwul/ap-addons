@@ -72,7 +72,7 @@ class CICCSVParser(BaseSwissParser):
         :return: True if file is supported
         :rtype: bool
         """
-        return len(self.datas) > 1 and ('Solde' in self.datas[5])
+        return len(self.datas) > 0 and ('Solde' in self.datas[0])
 
     def _parse_currency_code(self):
         """Parse file currency ISO code
